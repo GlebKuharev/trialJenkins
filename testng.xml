@@ -5,7 +5,7 @@
     <classes>     
 <!--	  <class name="com.epam.test.TransferFlightTest"/> -->
 	  <class name="com.epam.test.TotalSumEqualsPaymentAmountTest"/>
-<!--  	  <class name="com.epam.test.TotalAmountFlightTest"/> -->
+  	  <class name="com.epam.test.TotalAmountFlightTest"/>
 	  <class name="com.epam.test.NonExistentFlightTest"/>
 <!--	   <class name="com.epam.test.VideoTest"/> -->
 	  <class name="com.epam.test.CorrectDisplayOfMyItineraryPageTest"/>	  
