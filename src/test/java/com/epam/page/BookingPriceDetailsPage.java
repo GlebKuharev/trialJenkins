@@ -57,6 +57,7 @@ public class BookingPriceDetailsPage extends AbstractPage {
     }
 
     public void fillBookForm() {
+        scroll("scroll(0,100)");
         wait(selectDepartureFlightButton);
         selectDepartureFlightButton.click();
         wait(disableSelectDepAiroprt, "class", "selected");
@@ -69,6 +70,13 @@ public class BookingPriceDetailsPage extends AbstractPage {
         wait(disableSelectArrAirport, "class", "selected");
         priceForOnePersonArriv = priceArrivalForOnePerson.getText();
 
+        try {
+            Thread.sleep(1000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+
+        wait(nextButton);
         nextButton.submit();
 
         wait(waitElement);
