@@ -1,15 +1,19 @@
 package com.epam.page;
 
+import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.epam.bean.FlightDetails;
 
 public class BookingTransferFlightPage extends AbstractPage {	
 
-	
+
 	private String outboundFlightCheck;
 	private String inboundFlightCheck;
 	FlightDetails businessObject;
@@ -47,10 +51,10 @@ public class BookingTransferFlightPage extends AbstractPage {
 	@FindBy(xpath = "//div[contains(@class,'panel_section-button-container')]/button[@type='submit']")
 	private WebElement searchButton;
 
-	@FindBy(xpath = "//section[contains(@class,'flight outbound')]//div[contains(@class,'margin-bottom-2rem margin-bottom-1d5rem--bp10')][1]")
+	@FindBy(xpath = "(//button[@class='flight-result-button'])[1]")
 	private WebElement outboundTimeButton;
 
-	@FindBy(xpath = "//section[contains(@class,'flight inbound')]//div[contains(@class,'margin-bottom-2rem margin-bottom-1d5rem--bp10')][1]")
+	@FindBy(xpath = "(//button[@class='flight-result-button'])[2]")
 	private WebElement inboundTimeButton;
 
 	@FindBy(xpath = "//*[@name='next_button']")
@@ -70,41 +74,41 @@ public class BookingTransferFlightPage extends AbstractPage {
 
 	@FindBy(xpath = "//*[contains(@class,'panel is-closed')]/div[5]/p[2]")
 	private WebElement inboundFlight;
-	
+
 	@FindBy(xpath = "//section[contains(@class,'flight outbound')]//div[contains(@class,'margin-bottom-2rem margin-bottom-1d5rem--bp10')][1]//div[contains(@class,'selected')]")
 	private WebElement outboundSelected;
-	
+
 	@FindBy(xpath = "//section[contains(@class,'flight inbound')]//div[contains(@class,'margin-bottom-2rem margin-bottom-1d5rem--bp10')][1]//div[contains(@class,'selected')]")
 	private WebElement inboundSelected;
-	
+
 	public BookingTransferFlightPage (WebDriver driver, FlightDetails businessObject) {
 		super(driver);
 		PageFactory.initElements(this.driver, this);
 		this.businessObject = businessObject;		
 	}
-	
-	 public static String[] getAirportNameFromDetailField(String flight) {
-	        String[] lines = flight.trim().split("–");
-	       return lines;
-	    }	
-	
-	    public boolean comparisonBookinResults() {
-	        String[] outbound = getAirportNameFromDetailField(outboundFlightCheck);
-	        String[] inbound = getAirportNameFromDetailField(inboundFlightCheck);
 
-	        if (outbound[FROM].contains(businessObject.getAirportOutboundFrom())
-					&& outbound[TO].contains(businessObject.getAirportOutboundTo()) 
-					&& inbound[FROM].contains(businessObject.getAirportInboundFrom())
-					&& inbound[TO].contains(businessObject.getAirportInboundTo())) {	
-			} else {
-				System.out.println(outbound[FROM]);
-				return false;
-			}		
-			return true;
-		}
-	 
-	    public void bookingConnectionFlight() {
-	    	
+	public static String[] getAirportNameFromDetailField(String flight) {
+		String[] lines = flight.trim().split("â€“");
+		return lines;
+	}	
+
+	public boolean comparisonBookinResults() {
+		String[] outbound = getAirportNameFromDetailField(outboundFlightCheck);
+		String[] inbound = getAirportNameFromDetailField(inboundFlightCheck);
+
+		if (outbound[FROM].contains(businessObject.getAirportOutboundFrom())
+				&& outbound[TO].contains(businessObject.getAirportOutboundTo()) 
+				&& inbound[FROM].contains(businessObject.getAirportInboundFrom())
+				&& inbound[TO].contains(businessObject.getAirportInboundTo())) {	
+		} else {
+			System.out.println(outbound[FROM]);
+			return false;
+		}		
+		return true;
+	}
+
+	public void bookingConnectionFlight() {
+
 		outboundFromInput.clear();
 		outboundFromInput.sendKeys(businessObject.getAirportOutboundFrom());
 		airport.click();
@@ -130,17 +134,21 @@ public class BookingTransferFlightPage extends AbstractPage {
 		panel.click();
 		wait(searchButton);
 		searchButton.click();		
-		
-		outboundTimeButton.click();		
-		 wait(outboundSelected);
-		 
-		inboundTimeButton.click();
-		 wait(inboundSelected);
-				
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", outboundTimeButton);
+		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(outboundTimeButton));
+		outboundTimeButton.submit();
+		wait(outboundSelected);
+
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", inboundTimeButton);
+		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(inboundTimeButton));
+		inboundTimeButton.submit();
+		wait(inboundSelected);
+
 		buttonDetails.click();
 		outboundFlightCheck = outboundFlight.getText();			
 		inboundFlightCheck = inboundFlight.getText();
-		
+
 	}
 
 }

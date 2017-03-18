@@ -16,10 +16,10 @@ public class TransferFlightTest {
 	 
 	 private static String airportOutboundFrom = "Stockholm (Arlanda)";
 	 private static String airportOutboundTo = "Eindhoven";
-	 private static String dataOutbound = "7 Jul 2017";
+	 private static String dataOutbound = "07-07-2017";
 	 private static String airportInboundFrom = "Eindhoven";
 	 private static String airportInboundTo = "Antalya";
-	 private static String dataInbound = "7 Jul 2017";	 
+	 private static String dataInbound = "07-07-2017";	
 
 	    @BeforeMethod(description = "Init browser")
 	    public void setUp()
