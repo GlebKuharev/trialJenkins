@@ -1,6 +1,7 @@
 package com.epam.page;
 
 import org.openqa.selenium.JavascriptExecutor;
+import org.openqa.selenium.StaleElementReferenceException;
 
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -56,5 +57,20 @@ public abstract class AbstractPage {
 		double number = Double.parseDouble(sb.toString());
 		return number;
 	}
+	
+	public boolean retryingFindClick(WebElement webElement) {
+        boolean result = false;
+        int attempts = 0;
+        while(attempts < 2) {
+            try {
+                webElement.click();
+                result = true;
+                break;
+            } catch(StaleElementReferenceException e) {
+            }
+            attempts++;
+        }
+        return result;
+}
 	
 }
