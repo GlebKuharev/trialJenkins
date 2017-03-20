@@ -1,5 +1,6 @@
 package com.epam.page;
 
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -45,9 +46,12 @@ public class HandLuggage extends AbstractPage {
 	public void openVideoPage() {
 
 //		wait(clickOpenVideoLink);
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(clickOpenVideoLink));
-		clickOpenVideoLink.click();
+//		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(clickOpenVideoLink));
+//		clickOpenVideoLink.click();
 
+		wait(iframe);
+		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", iframe);
+		
 		driver.switchTo().frame(iframe);
 		wait(linkButton);
 		linkButton.click();
