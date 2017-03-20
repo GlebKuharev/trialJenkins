@@ -37,7 +37,7 @@ public class HandLuggage extends AbstractPage {
 
 	public String getLink() {
 		
-		wait(linkVideo);
+//		wait(linkVideo);
 		String link = linkVideo.getText();
 		return link;
 	}
