@@ -25,7 +25,7 @@ public class HandLuggage extends AbstractPage {
 	private WebElement linkVideo;
 
 	@FindBy(xpath = ".//*[@id='eow-title']")
-	private WebElement linck;
+	private WebElement link;
 
 	@FindBy(xpath = "//button[contains(@class,'ytp-button ytp-share-button')]")
 	private WebElement linkButton;

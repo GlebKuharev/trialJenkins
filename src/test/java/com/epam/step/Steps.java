@@ -123,11 +123,12 @@ public class Steps {
 		mainPage.openPage();
 		mainPage.clickOnServiceBtn();
 		
-		HandLuggage handLuggae = new HandLuggage(driver);	
-		handLuggae.openVideoPage();
-		
-		YoutubePage youtubePage = new YoutubePage(driver, businessObject);		
-		youtubePage.openPage(handLuggae.getLink());
+		HandLuggage handLuggage = new HandLuggage(driver);	
+		handLuggage.openVideoPage();
+		String link = handLuggage.getLink();
+		YoutubePage youtubePage = new YoutubePage(driver, businessObject);
+//		youtubePage.openPage(handLuggage.getLink());
+		youtubePage.openPage(link);
 
 		return youtubePage.comparVideo();
 
