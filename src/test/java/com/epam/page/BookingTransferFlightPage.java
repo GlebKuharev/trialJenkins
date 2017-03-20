@@ -1,6 +1,5 @@
 package com.epam.page;
 
-import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -75,11 +74,10 @@ public class BookingTransferFlightPage extends AbstractPage {
 	@FindBy(xpath = "//*[contains(@class,'panel is-closed')]/div[5]/p[2]")
 	private WebElement inboundFlight;
 
-//	@FindBy(xpath = "//section[contains(@class,'flight outbound')]//div[contains(@class,'margin-bottom-2rem margin-bottom-1d5rem--bp10')][1]//div[contains(@class,'selected')]")
-	@FindBy(xpath ="//button[@class='flight-result-button']//span[@class='status-selected']")
+//	@FindBy(xpath = "//section[contains(@class,'flight inbound')]//div[contains(@class,'margin-bottom-2rem margin-bottom-1d5rem--bp10')][1]//div[contains(@class,'selected')]")
+	@FindBy(xpath = "//button[@class='flight-result-button']//span[@class='status-selected']")
 	private WebElement outboundSelected;
 
-//	@FindBy(xpath = "//section[contains(@class,'flight inbound')]//div[contains(@class,'margin-bottom-2rem margin-bottom-1d5rem--bp10')][1]//div[contains(@class,'selected')]")
 	@FindBy(xpath = "(//button[@class='flight-result-button']//span[@class='status-selected'])[2]")
 	private WebElement inboundSelected;
 
