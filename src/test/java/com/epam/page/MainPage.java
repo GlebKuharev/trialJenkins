@@ -7,6 +7,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import com.epam.bean.FlightDetails;
 
@@ -80,7 +82,7 @@ public class MainPage extends AbstractPage {
 
 	public void clickOnAddMulBtn()
 	{
-		wait(addMultipleDestinations);
+		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(addMultipleDestinations));
 		addMultipleDestinations.click();
 	}
 	

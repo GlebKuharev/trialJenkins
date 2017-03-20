@@ -4,11 +4,13 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 public class HandLuggage extends AbstractPage {
 
 	@FindBy(xpath = ".//*[@id='skip-links']/ul/li[5]/a")
-	private WebElement clickOpenVideoLinck;
+	private WebElement clickOpenVideoLink;
 
 	@FindBy(xpath = "//a[contains(@class,'ytp-title-link yt-uix-sessionlink')]")
 	private WebElement clickYoutubeLinck;
@@ -20,7 +22,7 @@ public class HandLuggage extends AbstractPage {
 	private WebElement videoName;
 
 	@FindBy(xpath = ".//*[@id='ytp-share-panel']/div/a")
-	private WebElement linckVideo;
+	private WebElement linkVideo;
 
 	@FindBy(xpath = ".//*[@id='eow-title']")
 	private WebElement linck;
@@ -35,15 +37,16 @@ public class HandLuggage extends AbstractPage {
 
 	public String getLink() {
 		
-		wait(linckVideo);
-		String link = linckVideo.getText();
+		wait(linkVideo);
+		String link = linkVideo.getText();
 		return link;
 	}
 
 	public void openVideoPage() {
 
-		wait(clickOpenVideoLinck);
-		clickOpenVideoLinck.click();
+//		wait(clickOpenVideoLink);
+		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(clickOpenVideoLink));
+		clickOpenVideoLink.click();
 
 		driver.switchTo().frame(iframe);
 		wait(linkButton);
