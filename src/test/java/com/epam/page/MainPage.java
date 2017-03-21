@@ -62,6 +62,7 @@ public class MainPage extends AbstractPage {
 	public void clickOnServiceBtn()
 	{
 		wait(serviceBtn);
+		new WebDriverWait(driver, 60).until(ExpectedConditions.elementToBeClickable(serviceBtn));
 		serviceBtn.click();
 		
 		wait(handluggageBtn);
