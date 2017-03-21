@@ -135,13 +135,13 @@ public class BookingTransferFlightPage extends AbstractPage {
 		wait(searchButton);
 		searchButton.click();		
 
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", outboundTimeButton);
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(outboundTimeButton));
+		scrollTo(outboundTimeButton);
+		new WebDriverWait(driver, 60).until(ExpectedConditions.elementToBeClickable(outboundTimeButton));
 		outboundTimeButton.submit();
 		wait(outboundSelected);
 
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", inboundTimeButton);
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(inboundTimeButton));
+		scrollTo(inboundTimeButton);
+		new WebDriverWait(driver, 60).until(ExpectedConditions.elementToBeClickable(inboundTimeButton));
 		inboundTimeButton.submit();
 		wait(inboundSelected);
 

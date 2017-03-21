@@ -20,20 +20,20 @@ public abstract class AbstractPage {
 
 	protected void wait(WebElement element) {
 
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 
 	protected void wait(WebElement element, String attribute, String value) {
 
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.attributeContains(element, attribute,
 				value));
 	}
 
 	protected void wait(WebElement element, String text) {
 
-		WebDriverWait wait = new WebDriverWait(driver, 30);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.textToBePresentInElement(element, text));
 	}
 
@@ -41,7 +41,7 @@ public abstract class AbstractPage {
 		((JavascriptExecutor) driver).executeScript(pix);
 	}
 
-	protected void scroll(WebElement element) {
+	protected void scrollTo(WebElement element) {
 		((JavascriptExecutor) driver).executeScript(
 				"arguments[0].scrollIntoView();", element);
 	}

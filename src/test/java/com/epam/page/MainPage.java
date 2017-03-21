@@ -82,7 +82,7 @@ public class MainPage extends AbstractPage {
 
 	public void clickOnAddMulBtn()
 	{
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(addMultipleDestinations));
+		new WebDriverWait(driver, 60).until(ExpectedConditions.elementToBeClickable(addMultipleDestinations));
 		addMultipleDestinations.click();
 	}
 	
@@ -115,7 +115,7 @@ public class MainPage extends AbstractPage {
 			List<WebElement> iElements = driver.findElements(By.xpath("//li[2]/ol/li"));
 			for (WebElement elem : iElements) {
 				if (elem.getText().equals(businessObject.getAirportArriv())) {
-					scroll(elem);
+					scrollTo(elem);
 					wait(elem);
 					elem.click();
 					break;

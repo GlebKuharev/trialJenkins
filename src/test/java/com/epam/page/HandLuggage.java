@@ -48,8 +48,8 @@ public class HandLuggage extends AbstractPage {
 //		wait(clickOpenVideoLink);
 //		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(clickOpenVideoLink));
 //		clickOpenVideoLink.click();
-		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", iframe);
-		new WebDriverWait(driver, 30).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframe));
+		scrollTo(iframe);
+		new WebDriverWait(driver, 60).until(ExpectedConditions.frameToBeAvailableAndSwitchToIt(iframe));
 		
 		
 //		driver.switchTo().frame(iframe);

@@ -65,7 +65,7 @@ public class BookingPriceDetailsPage extends AbstractPage {
 //    	scroll("scroll(0,100)");
 //        wait(selectDepartureFlightButton);
 		((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", selectDepartureFlightButton);
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(selectDepartureFlightButton));
+		new WebDriverWait(driver, 60).until(ExpectedConditions.elementToBeClickable(selectDepartureFlightButton));
         selectDepartureFlightButton.submit();
         wait(disableSelectDepAiroprt, "class", "selected");
         priceForOnePersonDep = priceDepartureForOnePerson.getText();
@@ -74,7 +74,7 @@ public class BookingPriceDetailsPage extends AbstractPage {
 //        wait(selectArrivalFlightButton);
 
         ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView(true);", selectArrivalFlightButton);
-		new WebDriverWait(driver, 30).until(ExpectedConditions.elementToBeClickable(selectArrivalFlightButton));
+		new WebDriverWait(driver, 60).until(ExpectedConditions.elementToBeClickable(selectArrivalFlightButton));
         selectArrivalFlightButton.submit();
         wait(disableSelectArrAirport, "class", "selected");
         priceForOnePersonArriv = priceArrivalForOnePerson.getText();
